@@ -1,0 +1,2 @@
+# FROSTHACK
+ Repository for IIT MANDI HACKATHON
