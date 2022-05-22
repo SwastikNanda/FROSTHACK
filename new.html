@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KUCH BHI</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap");
+
+      header {
+        height: 200vh;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background-color: #252522;
+      }
+      .hamburger {
+        display: none;
+      }
+
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: #101010;
+      }
+      .nav-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-item {
+        margin-left: 5rem;
+        font-size: 2rem;
+      }
+
+      /* .nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    COLOR:#e7cc9f;
+    text-decoration: none;
+} */
+      /* .nav-item:hover{
+  background-color:#e7cc9f ;
+} */
+      /* .nav-link:hover{
+    color: #fff;
+} */
+      .nav-link {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #e7cc9f;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+      }
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #e7cc9f;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .nav-link:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .nav-logo {
+        font-size: 2.1rem;
+        font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+        font-size: 24px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 700;
+        line-height: 26.4px;
+        color: #202020;
+      }
+
+      .navbar-custom {
+        background-color: black;
+      }
+      .container {
+        /* hide fixed overflow contents */
+        clip: rect(0, auto, auto, 0);
+
+        /* does not work if overflow = visible */
+        overflow: hidden;
+
+        /* only works with absolute positioning */
+        position: absolute;
+
+        /* Make sure containers are full-width and height */
+        height: 100vh;
+        left: 0;
+        width: 100%;
+
+        /* safari hack */
+        -webkit-mask-image: -webkit-linear-gradient(
+          top,
+          #ffffff 0%,
+          #ffffff 100%
+        );
+      }
+
+      .container_solid {
+        background: white;
+
+        /* position this container at the top of its parent element */
+        top: 0;
+      }
+
+      .title_wrapper {
+        position: fixed;
+        display: block;
+        margin: auto;
+        width: 100%;
+        /* center the text wrapper vertically */
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .title_wrapper h1 {
+        text-align: center;
+        font-size: 64px;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 900;
+      }
+
+      .container_solid .title_wrapper h1 {
+        /* the text background */
+        /* background: url(https://cdn.pixabay.com/photo/2016/11/18/17/47/iphone-1836071_960_720.jpg); */
+        background-color: #e7cc9f;
+        background-size: 100vw auto;
+        background-position: center;
+
+        /* clip the text is possible */
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* fallback text color */
+        color: black;
+      }
+
+      .container_image {
+        /* Grab a free image from unsplash */
+        background-image: url(https://cdn.pixabay.com/photo/2019/07/02/11/18/crowd-4312230_960_720.jpg);
+        background-size: 100vw auto;
+        background-position: center;
+        background-attachment: fixed;
+
+        /* position the second container below the first container */
+        top: 100vh;
+      }
+
+      .container_image .title_wrapper h1 {
+        color: white;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 2em;
+        margin: auto;
+        max-width: 800px;
+      }
+
+      section h2 {
+        font-family: "Fraunces", serif;
+      }
+
+      section p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      }
+
+      .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 500px;
+        perspective: 1000px;
+        margin: 3rem;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+
+      .flip-card-back {
+        background-color: #e7cc9f;
+        color: #202020;
+        transform: rotateY(180deg);
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        border-radius: 10px;
+      }
+      @media only screen and (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 5rem;
+          flex-direction: column;
+          background-color: #fff;
+          width: 100%;
+          border-radius: 10px;
+          text-align: center;
+          align-items: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+          z-index: 20000;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 2.5rem 0;
+        }
+
+        .hamburger {
+          display: block;
+          cursor: pointer;
+          z-index: 1000;
+        }
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+
+      #neeche {
+        background-color: #202020;
+      }
+      th,
+      td {
+        border: 1px solid #e7cc9f;
+        border-radius: 70px;
+      }
+      table {
+        border-spacing: 30px;
+      }
+      #list {
+        font-size: 25px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-custom">
+        <a href="#" class="nav-logo" style="z-index: 1000"
+          ><img src="logo2.png" alt="logo" height="100rem"
+        /></a>
+        <ul class="nav-menu">
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="product.html" class="nav-link">HOME</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="product.html" class="nav-link">EVENT</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="aboutus.html" class="nav-link">ABOUT US</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="contact.html" class="nav-link">CONTACT</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+
+      <div class="container container_solid" style="background-color: #252522">
+        <div class="title_wrapper">
+          <h1>FINE EVE</h1>
+          <h2 style="text-align: center; background-color: #e7cc9f">
+            A ONE STOP SOLUTION FOR YOUR EVERY SPECIAL EVE.
+          </h2>
+        </div>
+      </div>
+
+      <!-- Second container -->
+      <div class="container container_image" aria-hidden="true">
+        <div class="title_wrapper">
+          <h1>WEBSITE DESCRIPTION</h1>
+        </div>
+      </div>
+    </header>
+
+    <div id="neeche">
+      <h3 style="color: #e7cc9f">
+        PLEASE CHOOSE THE TYPE OF EVENT TO BE MANAGED-
+      </h3>
+      <table align="center">
+        <tr>
+          <td align="center">
+            INFORMAL EVENTS
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img
+                    src="formal.jpg"
+                    alt="Avatar"
+                    style="width: 300px; height: 500px"
+                  />
+                </div>
+                <div class="flip-card-back">
+                  <ul id="list">
+                    <h1 style="margin-left: -30px">FORMAL EVENTS</h1>
+
+                    <li>BIRTHDAY</li>
+                    <li>ANIVERSARY</li>
+                    <li>INAUGRATION</li>
+                    <li>FESTIVAL CELEBRATION</li>
+                    <li>CUSTOM</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img
+                    src="informal.jpg"
+                    alt="Avatar"
+                    style="width: 300px; height: 500px"
+                  />
+                </div>
+                <div class="flip-card-back">
+                  <h1>FORMAL EVENTS</h1>
+                  <ul id="list">
+                    <li>SEMINARS</li>
+                    <br />
+                    <li>CONFERENCE</li>
+                    <br />
+                    <li>MEETING</li>
+                    <br />
+                    <li>WORKSHOP</li>
+                    <br />
+                    <li>SYMPOSIUM</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", mobileMenu);
+
+      function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      }
+
+      const navLink = document.querySelectorAll(".nav-link");
+
+      navLink.forEach((n) => n.addEventListener("click", closeMenu));
+
+      function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
