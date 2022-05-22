@@ -1,393 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FineEve</title>
-    <STYLE>
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KUCH BHI</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap");
 
-header {
-  height: 200vh;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background-color: #252522;
-}
-.hamburger {
-    display: none;
-}
+      header {
+        height: 200vh;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background-color: #252522;
+      }
+      .hamburger {
+        display: none;
+      }
 
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: #101010;
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: #101010;
+      }
+      .nav-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-}
-.nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+      .nav-item {
+        margin-left: 5rem;
+        font-size: 2rem;
+      }
 
-.nav-item {
-    margin-left: 5rem;
-    font-size: 2rem;
-}
+      /* .nav-link{
+          font-size: 1.6rem;
+          font-weight: 400;
+          COLOR:#e7cc9f;
+          text-decoration: none;
+      } */
+      /* .nav-item:hover{
+        background-color:#e7cc9f ;
+      } */
+      /* .nav-link:hover{
+          color: #fff;
+      } */
+      .nav-link {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #e7cc9f;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+      }
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #e7cc9f;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .nav-link:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .nav-logo {
+        font-size: 2.1rem;
+        font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+        font-size: 24px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 700;
+        line-height: 26.4px;
+        color: #202020;
+      }
 
-/* .nav-link{
-    font-size: 1.6rem;
-    font-weight: 400;
-    COLOR:#e7cc9f;
-    text-decoration: none;
-} */
-/* .nav-item:hover{
-  background-color:#e7cc9f ;
-} */
-/* .nav-link:hover{
-    color: #fff;
-} */
-.nav-link {
-  font-size: 1.6rem;
-    font-weight: 400;
-    COLOR:#e7cc9f;
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-}
-.nav-link:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color:#e7cc9f;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-.nav-link:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-.nav-logo {
-     font-size: 2.1rem; 
-    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
-     font-size: 24px;
-      font-style: normal; 
-      font-variant: normal;
-       font-weight: 700; 
-       line-height: 26.4px; 
-      color: #202020; 
-}
+      .navbar-custom {
+        background-color: black;
+      }
+      .container {
+        /* hide fixed overflow contents */
+        clip: rect(0, auto, auto, 0);
 
-.navbar-custom {
-    background-color: black;
-}
-.container {
-  /* hide fixed overflow contents */
-  clip: rect(0, auto, auto, 0);
+        /* does not work if overflow = visible */
+        overflow: hidden;
 
-  /* does not work if overflow = visible */
-  overflow: hidden;
+        /* only works with absolute positioning */
+        position: absolute;
 
-  /* only works with absolute positioning */
-  position: absolute;
+        /* Make sure containers are full-width and height */
+        height: 100vh;
+        left: 0;
+        width: 100%;
 
-  /* Make sure containers are full-width and height */
-  height: 100vh;
-  left: 0;
-  width: 100%;
-  
-  
-  /* safari hack */
-  -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
-}
+        /* safari hack */
+        -webkit-mask-image: -webkit-linear-gradient(
+          top,
+          #ffffff 0%,
+          #ffffff 100%
+        );
+      }
 
-.container_solid {
-  background: white;
-  
-  /* position this container at the top of its parent element */
-  top: 0;
-}
+      .container_solid {
+        background: white;
 
-.title_wrapper {
-  position: fixed;
-  display: block;  
-  margin: auto;
-  width: 100%;
-  /* center the text wrapper vertically */
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
+        /* position this container at the top of its parent element */
+        top: 0;
+      }
 
-.title_wrapper h1 {
-  text-align: center;
-  font-size: 64px;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: 'Fraunces', serif;
-  font-weight: 900;
-}
+      .title_wrapper {
+        position: fixed;
+        display: block;
+        margin: auto;
+        width: 100%;
+        /* center the text wrapper vertically */
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
 
-.container_solid .title_wrapper h1 {
-  /* the text background */
-  /* background: url(https://cdn.pixabay.com/photo/2016/11/18/17/47/iphone-1836071_960_720.jpg); */
-  background-color: #e7cc9f;
-  background-size: 100vw auto;
-  background-position: center;
-  
-  /* clip the text is possible */
-  text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  
-  /* fallback text color */
-  color: black;
-}
+      .title_wrapper h1 {
+        text-align: center;
+        font-size: 64px;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 900;
+      }
 
-.container_image {
-  /* Grab a free image from unsplash */
-  background-image: url(https://cdn.pixabay.com/photo/2019/07/02/11/18/crowd-4312230_960_720.jpg);
-  background-size:100vw auto;
-  background-position: center;
-  background-attachment: fixed;
-  
-  /* position the second container below the first container */
-  top: 100vh;
-}
+      .container_solid .title_wrapper h1 {
+        /* the text background */
+        /* background: url(https://cdn.pixabay.com/photo/2016/11/18/17/47/iphone-1836071_960_720.jpg); */
+        background-color: #e7cc9f;
+        background-size: 100vw auto;
+        background-position: center;
 
-.container_image .title_wrapper h1 {
-  color: white;
-}
+        /* clip the text is possible */
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
 
-section {
-  min-height: 100vh;
-  padding: 2em;
-  margin: auto;
-  max-width: 800px;
-}
+        /* fallback text color */
+        color: black;
+      }
 
-section h2 {
-  font-family: 'Fraunces', serif;
-}
+      .container_image {
+        /* Grab a free image from unsplash */
+        background-image: url(https://cdn.pixabay.com/photo/2019/07/02/11/18/crowd-4312230_960_720.jpg);
+        background-size: 100vw auto;
+        background-position: center;
+        background-attachment: fixed;
 
-section p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}
+        /* position the second container below the first container */
+        top: 100vh;
+      }
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 500px;
-  perspective: 1000px;
-  margin: 3rem;
-}
+      .container_image .title_wrapper h1 {
+        color: white;
+      }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
+      section {
+        min-height: 100vh;
+        padding: 2em;
+        margin: auto;
+        max-width: 800px;
+      }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+      section h2 {
+        font-family: "Fraunces", serif;
+      }
 
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+      section p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      }
 
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
+      .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 500px;
+        perspective: 1000px;
+        margin: 3rem;
+      }
 
-.flip-card-back {
-  background-color: #e7cc9f;
-  color: #202020;
-  transform: rotateY(180deg);
-}
-#neeche{
-  display: flex;
-  flex-wrap: wrap;
-}
-@media only screen and (max-width: 768px) {
+      .flip-card-inner {
+        position: relative;
+        width: 380px;
+        height: 300px;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+
+      .flip-card-back {
+        background-color: #e7cc9f;
+        color: #202020;
+        transform: rotateY(180deg);
+      }
+      #neeche {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media only screen and (max-width: 768px) {
         .nav-menu {
-            position: fixed;
-            left: -100%;
-            top: 5rem;
-            flex-direction: column;
-            background-color: #fff; 
-            width: 100%;
-            border-radius: 10px;
-            text-align: center;
-            align-items: center;
-            transition: 0.3s;
-            box-shadow:
-                0 10px 27px rgba(0, 0, 0, 0.05);
-                z-index: 20000;
+          position: fixed;
+          left: -100%;
+          top: 5rem;
+          flex-direction: column;
+          background-color: #fff;
+          width: 100%;
+          border-radius: 10px;
+          text-align: center;
+          align-items: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+          z-index: 20000;
         }
-    
+
         .nav-menu.active {
-            left: 0;
+          left: 0;
         }
-    
+
         .nav-item {
-            margin: 2.5rem 0;
+          margin: 2.5rem 0;
         }
-    
+
         .hamburger {
-            display: block;
-            cursor: pointer;
-            z-index: 1000;
+          display: block;
+          cursor: pointer;
+          z-index: 1000;
         }
         .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
+          opacity: 0;
+        }
 
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
 
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    
-    }
-    
-    </STYLE>
-</head>
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
 
-<body style="background-color:#202020;">
+      .glass-panel {
+        color: #fff;
+        margin: 40px auto;
+        background-color: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        border-radius: 15px;
+        padding: 32px;
+        backdrop-filter: blur(10px);
+      }
 
-<header>
-    <nav class="navbar navbar-custom">
-        <a href="#" class="nav-logo" style="z-index: 1000;"><img src="logo2.png" alt="logo" height="100rem"></a>
+      /* Extra styles for demo */
+      /* Article:  https://superdevresources.com/glassmorphism-ui-css/ */
+      .glass-panel {
+        background-image: "bg.jpg";
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        font-family: "Open Sans", sans-serif;
+        max-width: 980px;
+      }
+
+      p.glass-panel {
+        font-family: "Great Vibes", cursive;
+        font-weight: 60px;
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 32px;
+        color: black;
+        font-size: 30px;
+      }
+      ul {
+        font-size: 30px;
+        font-family: "Great Vibes", cursive;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #202020">
+    <header>
+      <nav class="navbar navbar-custom">
+        <a href="#" class="nav-logo" style="z-index: 1000"
+          ><img src="logo2.png" alt="logo" height="100rem"
+        /></a>
         <ul class="nav-menu">
-            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
-                <a href="home.html" class="nav-link">HOME</a>
-            </li>
-            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
-                <a href="#neeche" class="nav-link">EVENT</a>
-            </li>
-            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
-                <a href="aboutus.html" class="nav-link">ABOUT US</a>
-            </li>
-            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
-                <a href="contact.html" class="nav-link">CONTACT</a>
-            </li>
-            
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="home.html" class="nav-link">HOME</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="#neeche" class="nav-link">EVENT</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="aboutus.html" class="nav-link">ABOUT US</a>
+          </li>
+          <li class="nav-item" style="z-index: 1000; list-style-type: none">
+            <a href="contact.html" class="nav-link">CONTACT</a>
+          </li>
         </ul>
         <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
-    </nav>
- 
+      </nav>
 
-    <div class="container container_solid" style="background-color:#252522;"> 
-      <div class="title_wrapper">
-        <h1>FINE EVE</h1>
-        <h2 style=" text-align: center; background-color: #e7cc9f;">A ONE STOP SOLUTION FOR YOUR EVERY SPECIAL EVE.</h2>
-      </div>
-    </div>
-  
-    <!-- Second container -->
-    <div class="container container_image" aria-hidden="true">
-      <div class="title_wrapper">
-        <h2>Hello People,
-          Are you feeling exhausted in hassle to manage your events? Or you are not getting a proper way to shortlist your haps?
-          Then why to worry about when we are here!
-          You are just one step away to overcome this hindrance. We will provide you all facilities which are required to host your event in a single door. Here you’ll get all needful things in single step by visiting our website.
-          You just take care of your loved ones, FineEve will take care of your events! 
+      <div class="container container_solid" style="background-color: #252522">
+        <div class="title_wrapper">
+          <h1>FINE EVE</h1>
+          <h2 style="text-align: center; background-color: #e7cc9f">
+            A ONE STOP SOLUTION FOR YOUR EVERY SPECIAL EVE.
           </h2>
-      </div>
-    </div>
-  
-  </header>
-  
-  <section id="neeche" style="background-color:#202020; width:100%; margin-top: 0%;">
-    
-    <h3 STYLE="color: #e7cc9f;text-align: center;">PLEASE CHOOSE THE TYPE OF EVENT TO BE MANAGED-</h3>
-
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="informal.jpg" alt="Avatar" style="width:300px;height:300px;/* Full height */
-          height: 100%;
-        
-          /* Center and scale the image nicely */
-          background-position: center;
-          background-repeat: no-repeat;">
-        </div>
-        <div class="flip-card-back">
-          <h1>FOR INFORMAL EVENTS</h1>
         </div>
       </div>
-    </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="formal.jpg" alt="Avatar" style="width:300px;height:300px;
 
-          /* Full height */
-          height: 100%;
-        
-          /* Center and scale the image nicely */
-          background-position: center;
-          background-repeat: no-repeat;"> 
-        </div>
-        <div class="flip-card-back">
-          <h1>FOR FORMAL EVENTS</h1>
+      <!-- Second container -->
+      <div class="container container_image" aria-hidden="true">
+        <div class="title_wrapper">
+          <div class="glass-panel">
+            <p class="glass-panel">
+              Hello People, Are you feeling exhausted in hassle to manage your
+              events? Or you are not getting a proper way to shortlist your
+              haps? Then why to worry about when we are here! You are just one
+              step away to overcome this hindrance. We will provide you all
+              facilities which are required to host your event in a single door.
+              Here you'll get all needful things in single step by visiting our
+              website. You just take care of your loved ones, FineEve will take
+              care of your events!
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
+    <section
+      id="neeche"
+      style="background-color: #202020; width: 100%; margin-top: 0%"
+    >
+      <h3 class="glass-panel">
+        PLEASE CHOOSE THE TYPE OF EVENT TO BE MANAGED-
+      </h3>
 
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              src="informal.jpg"
+              alt="Avatar"
+              style="
+                width: 380px;
+                height: 300px; /* Full height */
+                height: 100%;
 
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+              "
+            />
+          </div>
+          <div class="flip-card-back">
+            <h1 style="margin: auto">FOR INFORMAL EVENTS</h1>
+            <ul>
+              <li>BIRTHDAY</li>
+              <li>ANIVERSARY</li>
+              <li>INAUGRATION</li>
+              <li>FESTIVAL</li>
+              <li>CUSTOM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              src="formal.jpg"
+              alt="Avatar"
+              style="
+                width: 380px;
+                height: 300px;
 
-  <script>
-  const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+                /* Full height */
+                height: 100%;
 
-hamburger.addEventListener("click", mobileMenu);
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+              "
+            />
+          </div>
+          <div class="flip-card-back">
+            <h1 style="margin: auto">FOR FORMAL EVENTS</h1>
+            <ul>
+              <li>CONFERENCE</li>
+              <li>MEETINGS</li>
+              <li>SEMINAR</li>
+              <li>WORKSHOP</li>
+              <li>CUSTOM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function mobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-}
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
 
-const navLink = document.querySelectorAll(".nav-link");
+      hamburger.addEventListener("click", mobileMenu);
 
-navLink.forEach(n => n.addEventListener("click", closeMenu));
+      function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      }
 
-function closeMenu() {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");}
+      const navLink = document.querySelectorAll(".nav-link");
+
+      navLink.forEach((n) => n.addEventListener("click", closeMenu));
+
+      function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
     </script>
-</body>
-
+  </body>
 </html>
