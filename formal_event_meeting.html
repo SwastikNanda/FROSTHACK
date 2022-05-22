@@ -5,8 +5,285 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width, initial-scale=1.0">
     <title>FINE EVE</title>
-</head>
-<body>
+
+    <style>
+            .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #252522;
+}
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #252522;
+
+}
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 5rem;
+    font-size: 2rem;
+}
+
+/* .nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    COLOR:#e7cc9f;
+    text-decoration: none;
+} */
+/* .nav-item:hover{
+  background-color:#e7cc9f ;
+} */
+/* .nav-link:hover{
+    color: #fff;
+} */
+.nav-link {
+  font-size: 1.6rem;
+    font-weight: 400;
+    COLOR:#e7cc9f;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color:#e7cc9f;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.nav-link:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.nav-logo {
+     font-size: 2.1rem; 
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+     font-size: 24px;
+      font-style: normal; 
+      font-variant: normal;
+       font-weight: 700; 
+       line-height: 26.4px; 
+      color: #202020; 
+}
+
+.navbar-custom {
+    background-color: #252522;
+}
+.flip-card {
+  background-color: transparent;
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+  margin: 2rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #e7cc9f;
+  color: #202020;
+  transform: rotateY(180deg);
+}
+    @media only screen and (max-width: 768px) {
+        .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 5rem;
+            flex-direction: column;
+            background-color: #fff; 
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            align-items: center;
+            transition: 0.3s;
+            box-shadow:
+                0 10px 27px rgba(0, 0, 0, 0.05);
+                z-index: 20000;
+        }
     
+        .nav-menu.active {
+            left: 0;
+        }
+    
+        .nav-item {
+            margin: 2.5rem 0;
+        }
+    
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    }
+    #dabba{
+        width: 100%;
+
+        display:flex;
+        flex-wrap: wrap;
+    }
+    #buy_button{
+        margin-top: 70%;
+        height: 2rem;
+        width: 4rem;
+    }
+    </style>
+    
+</head>
+<body style="background-color: #252522;">
+
+    <nav class="navbar navbar-custom">
+        <a href="#" class="nav-logo" style="z-index: 1000;"><img src="logo2.png" alt="logo" height="100rem"></a>
+        <ul class="nav-menu">
+            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
+                <a href="home.html" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
+                <a href="home.html#neeche" class="nav-link">EVENT</a>
+            </li>
+            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
+                <a href="aboutus.html" class="nav-link">ABOUT US</a>
+            </li>
+            <li class="nav-item" style="z-index: 1000; list-style-type:none;">
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <h1 style="margin: auto; text-align: center;">For MEETINGS</h1><br>
+  <div id="dabba">
+      
+    <div class="flip-card" style="margin-left: 5rem;">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://cdn.shopify.com/s/files/1/0173/7644/4470/products/2250069_main_3268fc19-1392-4d5c-8b43-555f20d47ebd_1024x1024.jpg?v=1629287555" alt="DIARY" style="width:400px;height:300px;/* Full height */
+            height: 100%;
+          
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Paperkraft Notepad , 21.0 cm x 14.8 cm, 80 pages, Unruled<BR> <a href="https://itcstore.in/products/paperkraft-notepad-148-x-210-80-pages-unruled-pinned-flip-over-pack-of-24-indore-idr?variant=39560519057462&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&source_campaign=CX_ITC_itcstore_Perf_Max_All_Products_New_Cities_102021&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45ZqIqejQuibJUrDOBF1zwJ6kI0G1Ni43jdjQHO0PTIA-Oix6GXOrIoaAtZ7EALw_wcB?variant=39560519057462&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&source_campaign=CX_ITC_itcstore_Perf_Max_All_Products_New_Cities_102021&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45ZqIqejQuibJUrDOBF1zwJ6kI0G1Ni43jdjQHO0PTIA-Oix6GXOrIoaAtZ7EALw_wcB"><button ID="buy_button">BUY</button></a></h1>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://cdn.shopify.com/s/files/1/0173/7644/4470/products/04020027-01_569d6470-f06e-4bc7-a0c8-01fbf3c38294_1024x1024.jpg?v=1625919648" alt="Avatar" style="width:400px;height:300px;
+  
+            /* Full height */
+            height: 100%;
+          
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;"> 
+          </div>
+          <div class="flip-card-back">
+            <h1>Classmate Da Vinci 0.7 mm Mechanical Pencil with Lead Box (Pack of 1)<BR> <a href="https://itcstore.in/products/classmate-da-vinci-0-7-mm-mechanical-pencil-with-lead-box-pack-of-1-indore-idr"><button ID="buy_button">BUY</button></a></h1>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://bisleri-shop-storage.s3.ap-south-1.amazonaws.com/products/July2021/O9Se5gWCjEwgy4h4fKbs.jpg" alt="Avatar" style="width:400px;height:300px;
+  
+            /* Full height */
+            height: 100%;
+          
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;"> 
+          </div>
+          <div class="flip-card-back">
+            <h1>Bisleri 250ml Water Bottles (Pack of 48)<BR> <a href="https://www.bisleri.com/product-detail/bisleri-250ml-water-bottles"><button ID="buy_button">BUY</button></a>
+            </h1>
+          </div>
+        </div>
+      </div>
+      
+      </div>  
+      <script>
+        const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+      
+      hamburger.addEventListener("click", mobileMenu);
+      
+      function mobileMenu() {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+      }
+      
+      const navLink = document.querySelectorAll(".nav-link");
+      
+      navLink.forEach(n => n.addEventListener("click", closeMenu));
+      
+      function closeMenu() {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");}
+          </script>
 </body>
 </html>
